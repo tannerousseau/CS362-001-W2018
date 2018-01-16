@@ -50,7 +50,7 @@ public class TimeTable {
 	        }
 	        
 	        //Retrieve the appts - <appt> 
-		for (int i = 0; i < appts.size(); i++) {
+		for (int i = 0; i < appts.size()-1; i++) {
 			Appt appt=appts.get(i);
 			if(!appt.getValid()) continue;
 			// Figure out which days the appointment occurs on
@@ -184,7 +184,7 @@ public class TimeTable {
 	            case Appt.RECUR_BY_YEARLY:
 	                //Just increment the year. The only possible problem is an 
 	                //appointment that recurs on February 29.
-	                nextDay.add(nextDay.YEAR, 1);
+	                nextDay.add(nextDay.MONTH, 1);
 	                return nextDay;
 	        }
 	  
@@ -198,7 +198,7 @@ public class TimeTable {
 	     **/
 	    public LinkedList<Appt> deleteAppt(LinkedList<Appt> appts,Appt appt) {
 	    	//Do not do anything to appts equals to null 
-	        if(appts==null||appt==null)
+	        if(appts==null)
         		return null;
 	    	//Do not do anything to invalid appointments
 	        if (!appt.getValid()) {

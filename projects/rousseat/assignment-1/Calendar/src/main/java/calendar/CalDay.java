@@ -60,8 +60,6 @@ public class CalDay {
 		setYear(year);
 	
 		setAppts(new LinkedList<Appt>());
-	
-		valid = true;
 	}
 	
 	/**
