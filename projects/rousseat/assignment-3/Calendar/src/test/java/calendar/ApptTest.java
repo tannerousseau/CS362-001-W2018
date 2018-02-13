@@ -86,6 +86,9 @@ public class ApptTest{
         appt.setStartDay(30);
         assertTrue(appt.getValid());
         assertEquals(30, appt.getStartDay());
+        appt.setStartDay(31);
+        assertTrue(appt.getValid());
+        assertEquals(31, appt.getStartDay());
         appt.setStartDay(0);
         assertFalse(appt.getValid());
         assertEquals(0, appt.getStartDay());
@@ -187,13 +190,38 @@ public class ApptTest{
 
     @Test
     public void testCompareTo(){
-        Appt appt1, appt2, appt3;
-        appt1 = new Appt(1, 2, 3, 4, 2018, "title", "description");
-        appt2 = new Appt(1, 2, 3, 4, 2018, "title", "description");
-        appt3 = new Appt(1, 2, 3, 4, 2017, "title", "description");
+        Appt appt1, appt2, appt3, appt4, appt5, appt6;
+        appt1 = new Appt(2, 2, 3, 4, 2018, "title", "description");
+        appt2 = new Appt(2, 2, 3, 4, 2018, "title", "description");
+        appt3 = new Appt(2, 2, 3, 4, 2017, "title", "description");
+        appt4 = new Appt(2, 2, 3, 3, 2017, "title", "description");
+        appt5 = new Appt(2, 2, 2, 3, 2017, "title", "description");
+        appt6 = new Appt(1, 2, 2, 3, 2017, "title", "description");
         assertEquals(0, appt1.compareTo(appt2));
         assertEquals(1, appt2.compareTo(appt3));
+        assertEquals(1, appt3.compareTo(appt4));
+        assertEquals(1, appt4.compareTo(appt5));
+        assertEquals(1, appt5.compareTo(appt6));
     }
 
+    @Test
+    public void testtoString(){
+        Appt appt = new Appt(1, 15, 3, 4, 2018, "title", "description");
+        String mssg = "\t4/3/2018 at 1:15am ,title, description\n";
+        assertEquals(mssg, appt.toString());
+        appt.setStartHour(12);
+        mssg = "\t4/3/2018 at 12:15pm ,title, description\n";
+        assertEquals(mssg, appt.toString());
+        appt.setStartHour(24);
+        assertEquals(null, appt.toString());
+        appt.setStartHour(11);
+        mssg = "\t4/3/2018 at 11:15am ,title, description\n";
+        assertEquals(mssg, appt.toString());
+        appt.setStartHour(0);
+        mssg = "\t4/3/2018 at 12:15am ,title, description\n";
+        assertEquals(mssg, appt.toString());
+
+
+    }
 
 }
