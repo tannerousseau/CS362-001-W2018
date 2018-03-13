@@ -1,6 +1,6 @@
 Bug ID - #1 - 3/12/18 - Reporter: Tanner Rousseau
 Bug overview-
-Summary: Error somewhere in printing appointments, unexpected newline, print formatting is off.
+Summary: Error somewhere in printing appointments, unexpected newline, print formatting is incorrect everytime.
 Reproduction: This bug appears anytime Calendar prints something to the screen.
 Version - Assignment 2 Buggy Code
 Severity - Low
